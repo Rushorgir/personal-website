@@ -1,0 +1,117 @@
+/* Lenis handles smooth scrolling */
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    background: white;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark {
+    background: #0a0a0a;
+    color: white;
+}
+
+.App {
+    width: 100%;
+    min-height: 100vh;
+    background: white;
+    transition: background-color 0.3s ease;
+}
+
+.App.dark {
+    background: #0a0a0a;
+}
+
+button {
+    cursor: pointer;
+}
+
+button:focus:not(.focus\:outline-none),
+a:focus:not(.focus\:outline-none) {
+    outline: 2px solid #000;
+    outline-offset: 2px;
+}
+
+.dark button:focus:not(.focus\:outline-none),
+.dark a:focus:not(.focus\:outline-none) {
+    outline: 2px solid #fff;
+}
+
+/* Dark mode color utilities */
+.dark .text-black {
+    color: white !important;
+}
+
+.dark .bg-white {
+    background: #0a0a0a !important;
+}
+
+.dark .border-gray-200,
+.dark .border-\[\#e5e5e5\] {
+    border-color: #333 !important;
+}
+
+/* Dark mode glassmorphism - inverted */
+.dark .bg-white\/70 {
+    background: rgba(10, 10, 10, 0.7) !important;
+}
+
+.dark .bg-white\/80 {
+    background: rgba(10, 10, 10, 0.8) !important;
+}
+
+.dark .hover\:bg-white\/80:hover {
+    background: rgba(10, 10, 10, 0.8) !important;
+}
+
+/* Dark mode card borders */
+.dark .border-white {
+    border-color: #333 !important;
+}
+
+/* Dark mode text colors */
+.dark .text-gray-600 {
+    color: #aaa !important;
+}
+
+.dark .text-gray-700 {
+    color: #999 !important;
+}
+
+.dark .text-gray-800 {
+    color: #ccc !important;
+}
+
+/* Dark mode hover effects */
+.dark .hover\:bg-black\/5:hover {
+    background: rgba(255, 255, 255, 0.05) !important;
+}
+
+.dark .hover\:border-black:hover {
+    border-color: white !important;
+}
+
+/* Dark mode group hover underline */
+.dark .group-hover\:w-full span {
+    background: white !important;
+}
+
+/* Dark mode button hover text fix */
+.dark a:hover {
+    color: inherit;
+}
+
+.dark a.hover\:text-white:hover {
+    color: white !important;
+}
+
+body.dark a:hover.dark\:hover\:text-black {
+    color: black !important;
+}
+
+/* GitHub button dark mode hover fix */
+body.dark .github-btn:hover {
+    color: black !important;
+}
