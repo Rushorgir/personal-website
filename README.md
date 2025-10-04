@@ -1,107 +1,57 @@
-# Rushaan Nayyar - Personal Website
+<!-- Banner -->
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:111111,100:BBBBBB&height=180&section=header&text=Personal%20Website&fontSize=38&fontColor=111111&animation=fadeIn&fontAlignY=35"/>
+</p>
 
-A modern, monochrome portfolio website showcasing my journey as an AI/ML developer and computer science student.
+<p align="center">
+  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=24&pause=1000&color=ffffff&center=true&vCenter=true&width=700&lines=Modern+AI+Portfolio+%7C+Minimal+Design;First-year+CS+Student+%40+VIT+Chennai;Projects+in+AI+%2F+ML+%2F+Web;React,+Three.js,+TailwindCSS+Showcase;Live+on+GitHub+Pages+%7C+Built+with+Care"/>
+</p>
 
-## Features
-
-- Clean monochrome design inspired by professional AI company portfolios
-- Interactive Three.js 3D wireframe animation in hero section
-- Smooth scroll-based navigation
-- Framer Motion animations
-- Responsive design for all devices
-- SEO optimized
-- GitHub Pages ready
-
-## Tech Stack
-
-- React 19
-- Tailwind CSS
-- Three.js (3D graphics)
-- Framer Motion (animations)
-- Lucide React (icons)
-- React Router DOM
-
-## Project Showcase
-
-1. **Zenly** - AI-powered journaling system for mental health support
-2. **Borgir Utilities** - Python Discord bot with dynamic voice channel management
-3. **Hermes** - AI-powered multilingual translator preserving nuanced meaning
-
-## Local Development
-
-```bash
-# Install dependencies
-cd frontend
-yarn install
-
-# Start development server
-yarn start
-```
-
-Visit http://localhost:3000
-
-## Building for Production
-
-```bash
-cd frontend
-yarn build
-```
-
-Creates optimized production build in `build/` folder.
-
-## Deployment to GitHub Pages
-
-See `GITHUB_PAGES_DEPLOYMENT.md` for complete deployment instructions.
-
-Quick deploy:
-```bash
-cd frontend
-yarn add gh-pages
-# Update package.json with homepage and deploy scripts
-yarn deploy
-```
-
-## Key Skills
-
-**Core Expertise:**
-- Python
-- Machine Learning
-- Artificial Intelligence
-- Deep Learning
-
-**Currently Learning:**
-- JavaScript, React, HTML/CSS
-- Tailwind CSS
-- MERN Stack (MongoDB, Express, React, Node.js)
-
-**Tools:**
-- VS Code, GitHub, Vercel, Supabase
-
-## Education
-
-Computer Science Student at VIT Chennai (First Year)
-
-## Contact
-
-- Email: nayyarrushaan@gmail.com
-- GitHub: https://github.com/rushaan
-- LinkedIn: https://www.linkedin.com/in/rushaan-nayyar
-
-## Design Philosophy
-
-This portfolio follows a monochrome, minimal aesthetic with:
-- Pure white backgrounds
-- Black text and accents
-- Light gray section backgrounds
-- Clean typography with light font weights
-- Subtle hover effects and transitions
-- Ample whitespace for breathing room
-- Professional, sophisticated feel
-
-## License
-
-All rights reserved - Rushaan Nayyar 2025
+<p align="center">
+  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB"/>
+  <img src="https://img.shields.io/badge/TailwindCSS-1a1a1a?style=for-the-badge&logo=tailwindcss&logoColor=38BDF8"/>
+  <img src="https://img.shields.io/badge/Three.js-111111?style=for-the-badge&logo=three.js&logoColor=white"/>
+  <img src="https://img.shields.io/badge/FramerMotion-16161D?style=for-the-badge&logo=framer&logoColor=F8F8F8"/>
+  <img src="https://img.shields.io/badge/Vercel-111111?style=for-the-badge&logo=vercel&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Supabase-20232A?style=for-the-badge&logo=supabase&logoColor=3ECF8E"/>
+</p>
 
 ---
 
-Built with care and deployed on GitHub Pages
+## 🖋️ Overview
+
+A **minimal, monochrome portfolio** to showcase my journey as a computer science student and AI/ML developer. The website highlights selected projects, my core skillset, and contact info through a clean interface. Built in React with Three.js-powered visuals, Framer Motion for smooth UI, and Tailwind CSS for scalable styling — fully responsive and optimized for all screens. **No distractions. Pure content.**
+
+---
+
+## ✨ Features
+
+- **Minimal Monochrome UI** — Elegant, grayscale palette for a focused look
+- **Interactive 3D Hero** — Three.js wireframe animation greeting visitors
+- **Ultra-Smooth Navigation** — Section scroll and animated transitions
+- **Responsive Design** — Works perfectly on phone, tablet, and desktop
+- **SEO Optimized** — Meta tags for better search and sharing
+- **GitHub Pages Ready** — Easy to deploy and share
+
+---
+
+## 🛠️ Tech Stack
+
+- React 19, React Router DOM
+- Tailwind CSS (utility-first CSS)
+- Three.js (3D Graphics)
+- Framer Motion (Animations)
+- Lucide React (Icon set)
+- GitHub Pages, Vercel (deploy)
+- 
+---
+
+## 🌐 Live Demo
+
+**Check out the website at [rushorgir.me](https://rushorgir.me)**
+
+---
+
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:111111,100:BBBBBB&height=85&section=footer"/>
+</p>
