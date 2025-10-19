@@ -14,4 +14,9 @@ export default defineConfig({
     port: 5173,
     open: false,
   },
+  build: {
+    // Output to the repository's docs/ folder so GitHub Pages can serve from main/docs
+    outDir: '../docs',
+    emptyOutDir: true,
+  },
 })
