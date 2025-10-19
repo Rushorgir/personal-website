@@ -85,6 +85,13 @@ const Hero = ({ theme }) => {
     }
   };
 
+  const scrollToProjects = () => {
+    const element = document.getElementById('projects');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <canvas
@@ -118,7 +125,7 @@ const Hero = ({ theme }) => {
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
             <button
-              onClick={scrollToAbout}
+              onClick={scrollToProjects}
               className="px-8 py-3 bg-black dark:bg-white text-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors duration-200"
             >
               View My Work

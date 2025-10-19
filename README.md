@@ -8,12 +8,12 @@
 </p>
 
 <p align="center">
+  <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white"/>
   <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB"/>
   <img src="https://img.shields.io/badge/TailwindCSS-1a1a1a?style=for-the-badge&logo=tailwindcss&logoColor=38BDF8"/>
   <img src="https://img.shields.io/badge/Three.js-111111?style=for-the-badge&logo=three.js&logoColor=white"/>
   <img src="https://img.shields.io/badge/FramerMotion-16161D?style=for-the-badge&logo=framer&logoColor=F8F8F8"/>
-  <img src="https://img.shields.io/badge/Vercel-111111?style=for-the-badge&logo=vercel&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Supabase-20232A?style=for-the-badge&logo=supabase&logoColor=3ECF8E"/>
+  <img src="https://img.shields.io/badge/GitHub%20Pages-222222?style=for-the-badge&logo=github&logoColor=white"/>
 </p>
 
 ---
@@ -42,8 +42,8 @@ A **minimal, monochrome portfolio** to showcase my journey as a computer science
 - Three.js (3D Graphics)
 - Framer Motion (Animations)
 - Lucide React (Icon set)
-- GitHub Pages, Vercel (deploy)
-- 
+- GitHub Pages (deploy)
+
 ---
 
 ## 🌐 Live Demo
