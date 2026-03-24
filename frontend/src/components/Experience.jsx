@@ -57,7 +57,15 @@ const Experience = () => {
                   <p className="text-sm text-gray-500 dark:text-gray-500 mb-2">{item.year}</p>
                   <h3 className="text-2xl font-light mb-1 text-black dark:text-white">{item.title}</h3>
                   <p className="text-lg text-gray-600 dark:text-gray-400 mb-3">{item.organization}</p>
-                  <p className="text-gray-700 dark:text-gray-300 leading-relaxed">{item.description}</p>
+                  {Array.isArray(item.description) ? (
+                    <ul className="list-disc pl-5 text-gray-700 dark:text-gray-300 leading-relaxed space-y-1">
+                      {item.description.map((point, pointIndex) => (
+                        <li key={pointIndex}>{point}</li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p className="text-gray-700 dark:text-gray-300 leading-relaxed">{item.description}</p>
+                  )}
                 </div>
               </motion.div>
             ))}

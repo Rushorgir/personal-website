@@ -94,13 +94,13 @@ const Skills = () => {
                 variants={itemVariants}
                 className="text-2xl font-light mb-6 text-black dark:text-white"
               >
-                Core Expertise
+                Languages
               </motion.h3>
               <motion.div
                 variants={containerVariants}
                 className="grid grid-cols-2 md:grid-cols-4 gap-4"
               >
-                {skills.core.map((skill, index) => (
+                {skills.languages.map((skill, index) => (
                   <SkillCard key={index} {...skill} />
                 ))}
               </motion.div>
@@ -111,13 +111,13 @@ const Skills = () => {
                 variants={itemVariants}
                 className="text-2xl font-light mb-6 text-black dark:text-white"
               >
-                Currently Learning
+                Frontend
               </motion.h3>
               <motion.div
                 variants={containerVariants}
-                className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4"
+                className="grid grid-cols-2 md:grid-cols-4 gap-4"
               >
-                {skills.learning.map((skill, index) => (
+                {skills.frontend.map((skill, index) => (
                   <SkillCard key={index} {...skill} />
                 ))}
               </motion.div>
@@ -128,7 +128,24 @@ const Skills = () => {
                 variants={itemVariants}
                 className="text-2xl font-light mb-6 text-black dark:text-white"
               >
-                Tools & Platforms
+                Backend
+              </motion.h3>
+              <motion.div
+                variants={containerVariants}
+                className="grid grid-cols-2 md:grid-cols-4 gap-4"
+              >
+                {skills.backend.map((skill, index) => (
+                  <SkillCard key={index} {...skill} />
+                ))}
+              </motion.div>
+            </div>
+
+            <div>
+              <motion.h3
+                variants={itemVariants}
+                className="text-2xl font-light mb-6 text-black dark:text-white"
+              >
+                Tools
               </motion.h3>
               <motion.div
                 variants={containerVariants}

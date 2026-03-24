@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import * as THREE from 'three';
 import { personalInfo } from '../mock';
 import { ArrowDown } from 'lucide-react';
-import ObfuscatedEmail from './ObfuscatedEmail';
 
 const Hero = ({ theme }) => {
   const canvasRef = useRef(null);
@@ -92,6 +91,13 @@ const Hero = ({ theme }) => {
     }
   };
 
+  const scrollToContact = () => {
+    const element = document.getElementById('contact');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <canvas
@@ -130,12 +136,12 @@ const Hero = ({ theme }) => {
             >
               View My Work
             </button>
-            <ObfuscatedEmail
-              email={personalInfo.email}
-              className="px-8 py-3 border border-black dark:border-white text-black dark:text-white hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition-colors duration-200"
+            <button
+              onClick={scrollToContact}
+              className="px-8 py-3 border border-black dark:border-white text-black dark:text-white hover:bg-black hover:text-white hover:border-black dark:hover:bg-white dark:hover:text-black dark:hover:border-black transition-colors duration-200"
             >
               Get In Touch
-            </ObfuscatedEmail>
+            </button>
           </motion.div>
         </motion.div>
       </div>
