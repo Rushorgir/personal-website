@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import * as THREE from 'three';
 import { personalInfo } from '../mock';
@@ -8,6 +8,7 @@ const Hero = ({ theme }) => {
   const canvasRef = useRef(null);
   const materialRef = useRef(null);
   const sceneInitialized = useRef(false);
+  const [isContactHovered, setIsContactHovered] = useState(false);
 
   // Initialize Three.js scene once
   useEffect(() => {
@@ -98,6 +99,15 @@ const Hero = ({ theme }) => {
     }
   };
 
+  const contactButtonStyle =
+    theme === 'dark'
+      ? isContactHovered
+        ? { backgroundColor: '#ffffff', color: '#000000', borderColor: '#000000' }
+        : { backgroundColor: 'transparent', color: '#ffffff', borderColor: '#ffffff' }
+      : isContactHovered
+        ? { backgroundColor: '#000000', color: '#ffffff', borderColor: '#000000' }
+        : { backgroundColor: 'transparent', color: '#000000', borderColor: '#000000' };
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <canvas
@@ -138,7 +148,10 @@ const Hero = ({ theme }) => {
             </button>
             <button
               onClick={scrollToContact}
-              className="px-8 py-3 border border-black dark:border-white text-black dark:text-white hover:bg-black hover:text-white hover:border-black dark:hover:bg-white dark:hover:text-black dark:hover:border-black transition-colors duration-200"
+              onMouseEnter={() => setIsContactHovered(true)}
+              onMouseLeave={() => setIsContactHovered(false)}
+              style={contactButtonStyle}
+              className="px-8 py-3 border transition-colors duration-200"
             >
               Get In Touch
             </button>
