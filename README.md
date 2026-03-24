@@ -46,12 +46,6 @@ A **minimal, monochrome portfolio** to showcase my journey as a computer science
 
 ---
 
-## 🌐 Live Demo
-
-**Check out the website at [rushorgir.me](https://rushorgir.me)**
-
----
-
 <p align="center">
   <img src="https://capsule-render.vercel.app/api?type=waving&color=0:111111,100:BBBBBB&height=85&section=footer"/>
 </p>
