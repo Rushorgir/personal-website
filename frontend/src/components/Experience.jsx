@@ -1,12 +1,12 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { experience } from '../mock';
+import React from "react";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { experience } from "../mock";
 
 const Experience = () => {
   const [ref, inView] = useInView({
     threshold: 0.1,
-    triggerOnce: true
+    triggerOnce: true,
   });
 
   const containerVariants = {
@@ -14,9 +14,9 @@ const Experience = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2
-      }
-    }
+        staggerChildren: 0.2,
+      },
+    },
   };
 
   const itemVariants = {
@@ -24,8 +24,8 @@ const Experience = () => {
     visible: {
       opacity: 1,
       x: 0,
-      transition: { duration: 0.6 }
-    }
+      transition: { duration: 0.6 },
+    },
   };
 
   return (
@@ -52,11 +52,15 @@ const Experience = () => {
                 className="relative pl-8 border-l-2 border-gray-200 dark:border-[#333] hover:border-black dark:hover:border-white transition-colors duration-300"
               >
                 <div className="absolute -left-[9px] top-0 w-4 h-4 bg-black dark:bg-white rounded-full"></div>
-                
+
                 <div className="pb-8">
                   <p className="text-sm text-gray-500 dark:text-gray-500 mb-2">{item.year}</p>
-                  <h3 className="text-2xl font-light mb-1 text-black dark:text-white">{item.title}</h3>
-                  <p className="text-lg text-gray-600 dark:text-gray-400 mb-3">{item.organization}</p>
+                  <h3 className="text-2xl font-light mb-1 text-black dark:text-white">
+                    {item.title}
+                  </h3>
+                  <p className="text-lg text-gray-600 dark:text-gray-400 mb-3">
+                    {item.organization}
+                  </p>
                   {Array.isArray(item.description) ? (
                     <ul className="list-disc pl-5 text-gray-700 dark:text-gray-300 leading-relaxed space-y-1">
                       {item.description.map((point, pointIndex) => (
@@ -64,7 +68,9 @@ const Experience = () => {
                       ))}
                     </ul>
                   ) : (
-                    <p className="text-gray-700 dark:text-gray-300 leading-relaxed">{item.description}</p>
+                    <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                      {item.description}
+                    </p>
                   )}
                 </div>
               </motion.div>

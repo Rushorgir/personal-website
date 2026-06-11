@@ -1,13 +1,13 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { personalInfo } from '../mock';
-import { GraduationCap, Globe2, Target } from 'lucide-react';
+import React from "react";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { personalInfo } from "../mock";
+import { GraduationCap, Globe2, Target } from "lucide-react";
 
 const About = () => {
   const [ref, inView] = useInView({
     threshold: 0.2,
-    triggerOnce: true
+    triggerOnce: true,
   });
 
   const containerVariants = {
@@ -15,9 +15,9 @@ const About = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2
-      }
-    }
+        staggerChildren: 0.2,
+      },
+    },
   };
 
   const itemVariants = {
@@ -25,8 +25,8 @@ const About = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6 }
-    }
+      transition: { duration: 0.6 },
+    },
   };
 
   return (
@@ -63,7 +63,9 @@ const About = () => {
                   <p className="text-gray-600 dark:text-gray-400">
                     {personalInfo.education.degree} at {personalInfo.education.institution}
                   </p>
-                  <p className="text-sm text-gray-500 dark:text-gray-500 mt-1">{personalInfo.education.year}</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-500 mt-1">
+                    {personalInfo.education.year}
+                  </p>
                 </div>
               </div>
 
@@ -72,7 +74,7 @@ const About = () => {
                 <div>
                   <h3 className="font-normal text-lg mb-1 text-black dark:text-white">Languages</h3>
                   <p className="text-gray-600 dark:text-gray-400">
-                    {personalInfo.languages.join(', ')}
+                    {personalInfo.languages.join(", ")}
                   </p>
                 </div>
               </div>
@@ -82,7 +84,8 @@ const About = () => {
                 <div>
                   <h3 className="font-normal text-lg mb-1 text-black dark:text-white">Goals</h3>
                   <p className="text-gray-600 dark:text-gray-400">
-                    Contributing to open source, creating impactful projects, participating in hackathons
+                    Contributing to open source, creating impactful projects, participating in
+                    hackathons
                   </p>
                 </div>
               </div>

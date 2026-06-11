@@ -1,8 +1,8 @@
-import React, { useRef, useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
-import * as THREE from 'three';
-import { personalInfo } from '../mock';
-import { ArrowDown } from 'lucide-react';
+import React, { useRef, useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import * as THREE from "three";
+import { personalInfo } from "../mock";
+import { ArrowDown } from "lucide-react";
 
 const Hero = ({ theme }) => {
   const canvasRef = useRef(null);
@@ -16,11 +16,16 @@ const Hero = ({ theme }) => {
     sceneInitialized.current = true;
 
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const camera = new THREE.PerspectiveCamera(
+      75,
+      window.innerWidth / window.innerHeight,
+      0.1,
+      1000
+    );
     const renderer = new THREE.WebGLRenderer({
       canvas: canvasRef.current,
       alpha: true,
-      antialias: true
+      antialias: true,
     });
 
     renderer.setSize(window.innerWidth, window.innerHeight);
@@ -29,7 +34,7 @@ const Hero = ({ theme }) => {
     const geometry = new THREE.TorusGeometry(2, 0.5, 16, 100);
     const material = new THREE.MeshBasicMaterial({
       color: 0xffffff, // Start with white for dark mode default
-      wireframe: true
+      wireframe: true,
     });
     materialRef.current = material;
     const torus = new THREE.Mesh(geometry, material);
@@ -41,8 +46,8 @@ const Hero = ({ theme }) => {
     const handleScroll = () => {
       scrollY = window.scrollY;
     };
-    
-    window.addEventListener('scroll', handleScroll);
+
+    window.addEventListener("scroll", handleScroll);
 
     const animate = () => {
       requestAnimationFrame(animate);
@@ -60,11 +65,11 @@ const Hero = ({ theme }) => {
       renderer.setSize(window.innerWidth, window.innerHeight);
     };
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
     return () => {
-      window.removeEventListener('resize', handleResize);
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("scroll", handleScroll);
       geometry.dispose();
       material.dispose();
       renderer.dispose();
@@ -74,46 +79,43 @@ const Hero = ({ theme }) => {
   // Update material color when theme changes
   useEffect(() => {
     if (materialRef.current) {
-      materialRef.current.color.setHex(theme === 'dark' ? 0xffffff : 0x000000);
+      materialRef.current.color.setHex(theme === "dark" ? 0xffffff : 0x000000);
     }
   }, [theme]);
 
   const scrollToAbout = () => {
-    const element = document.getElementById('about');
+    const element = document.getElementById("about");
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
     }
   };
 
   const scrollToProjects = () => {
-    const element = document.getElementById('projects');
+    const element = document.getElementById("projects");
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
     }
   };
 
   const scrollToContact = () => {
-    const element = document.getElementById('contact');
+    const element = document.getElementById("contact");
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
     }
   };
 
   const contactButtonStyle =
-    theme === 'dark'
+    theme === "dark"
       ? isContactHovered
-        ? { backgroundColor: '#ffffff', color: '#000000', borderColor: '#000000' }
-        : { backgroundColor: 'transparent', color: '#ffffff', borderColor: '#ffffff' }
+        ? { backgroundColor: "#ffffff", color: "#000000", borderColor: "#000000" }
+        : { backgroundColor: "transparent", color: "#ffffff", borderColor: "#ffffff" }
       : isContactHovered
-        ? { backgroundColor: '#000000', color: '#ffffff', borderColor: '#000000' }
-        : { backgroundColor: 'transparent', color: '#000000', borderColor: '#000000' };
+        ? { backgroundColor: "#000000", color: "#ffffff", borderColor: "#000000" }
+        : { backgroundColor: "transparent", color: "#000000", borderColor: "#000000" };
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      <canvas
-        ref={canvasRef}
-        className="absolute inset-0 w-full h-full opacity-10"
-      />
+      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full opacity-10" />
 
       <div className="relative z-20 max-w-7xl mx-auto px-6 text-center">
         <motion.div
@@ -124,7 +126,7 @@ const Hero = ({ theme }) => {
           <h1 className="text-6xl md:text-8xl lg:text-9xl font-extralight tracking-tight mb-6 leading-none text-black dark:text-white">
             {personalInfo.name}
           </h1>
-          
+
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

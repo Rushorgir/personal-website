@@ -1,5 +1,5 @@
-import React from 'react';
-import { personalInfo } from '../mock';
+import React from "react";
+import { personalInfo } from "../mock";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -11,10 +11,8 @@ const Footer = () => {
           <p className="text-sm text-gray-600 dark:text-gray-400">
             {currentYear} {personalInfo.name}. All rights reserved.
           </p>
-          
-          <p className="text-sm text-gray-600 dark:text-gray-400">
-            Designed and built with care
-          </p>
+
+          <p className="text-sm text-gray-600 dark:text-gray-400">Designed and built with care</p>
         </div>
       </div>
     </footer>

@@ -16,7 +16,7 @@ import ScrollToTop from "./components/ScrollToTop";
 function App() {
   const [theme, setTheme] = useState(() => {
     // Get theme from localStorage or default to 'dark'
-    return localStorage.getItem('theme') || 'dark';
+    return localStorage.getItem("theme") || "dark";
   });
 
   // Initialize Lenis smooth scrolling
@@ -24,8 +24,8 @@ function App() {
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      direction: 'vertical',
-      gestureDirection: 'vertical',
+      direction: "vertical",
+      gestureDirection: "vertical",
       smooth: true,
       mouseMultiplier: 1,
       smoothTouch: false,
@@ -47,17 +47,17 @@ function App() {
 
   useEffect(() => {
     // Apply theme to document body
-    if (theme === 'dark') {
-      document.body.classList.add('dark');
+    if (theme === "dark") {
+      document.body.classList.add("dark");
     } else {
-      document.body.classList.remove('dark');
+      document.body.classList.remove("dark");
     }
     // Save theme to localStorage
-    localStorage.setItem('theme', theme);
+    localStorage.setItem("theme", theme);
   }, [theme]);
 
   const toggleTheme = () => {
-    setTheme(prevTheme => prevTheme === 'light' ? 'dark' : 'light');
+    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
   };
 
   return (

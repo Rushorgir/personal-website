@@ -1,20 +1,20 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { personalInfo, socialLinks } from '../mock';
-import { Github, Linkedin, Mail } from 'lucide-react';
-import ObfuscatedEmail from './ObfuscatedEmail';
+import React from "react";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { personalInfo, socialLinks } from "../mock";
+import { Github, Linkedin, Mail } from "lucide-react";
+import ObfuscatedEmail from "./ObfuscatedEmail";
 
 const iconMap = {
   Github,
   Linkedin,
-  Mail
+  Mail,
 };
 
 const Contact = () => {
   const [ref, inView] = useInView({
     threshold: 0.2,
-    triggerOnce: true
+    triggerOnce: true,
   });
 
   const containerVariants = {
@@ -22,9 +22,9 @@ const Contact = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2
-      }
-    }
+        staggerChildren: 0.2,
+      },
+    },
   };
 
   const itemVariants = {
@@ -32,8 +32,8 @@ const Contact = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6 }
-    }
+      transition: { duration: 0.6 },
+    },
   };
 
   return (
@@ -57,18 +57,16 @@ const Contact = () => {
             variants={itemVariants}
             className="text-xl text-gray-600 dark:text-gray-400 mb-12 max-w-2xl mx-auto"
           >
-            I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions.
+            I'm always open to discussing new projects, creative ideas, or opportunities to be part
+            of your visions.
           </motion.p>
 
-          <motion.div
-            variants={itemVariants}
-            className="flex items-center justify-center gap-6"
-          >
+          <motion.div variants={itemVariants} className="flex items-center justify-center gap-6">
             {socialLinks.map((link, index) => {
               const IconComponent = iconMap[link.icon];
-              
+
               // Use ObfuscatedEmail for email links
-              if (link.icon === 'Mail') {
+              if (link.icon === "Mail") {
                 return (
                   <ObfuscatedEmail
                     key={index}
@@ -79,7 +77,7 @@ const Contact = () => {
                   </ObfuscatedEmail>
                 );
               }
-              
+
               return (
                 <a
                   key={index}

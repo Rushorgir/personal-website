@@ -1,7 +1,7 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { skills } from '../mock';
+import React from "react";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { skills } from "../mock";
 import {
   Code2,
   Brain,
@@ -15,8 +15,8 @@ import {
   Database,
   Code,
   Github,
-  Globe
-} from 'lucide-react';
+  Globe,
+} from "lucide-react";
 
 const iconMap = {
   Code2,
@@ -31,13 +31,13 @@ const iconMap = {
   Database,
   Code,
   Github,
-  Globe
+  Globe,
 };
 
 const Skills = () => {
   const [ref, inView] = useInView({
     threshold: 0.1,
-    triggerOnce: true
+    triggerOnce: true,
   });
 
   const containerVariants = {
@@ -45,9 +45,9 @@ const Skills = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1
-      }
-    }
+        staggerChildren: 0.1,
+      },
+    },
   };
 
   const itemVariants = {
@@ -55,8 +55,8 @@ const Skills = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.5 }
-    }
+      transition: { duration: 0.5 },
+    },
   };
 
   const SkillCard = ({ name, icon }) => {
@@ -66,7 +66,9 @@ const Skills = () => {
         variants={itemVariants}
         className="flex items-center gap-3 p-4 bg-white/70 dark:bg-[#0a0a0a]/70 backdrop-blur-md border border-gray-200 dark:border-[#333] hover:border-black dark:hover:border-white hover:bg-white/80 dark:hover:bg-[#0a0a0a]/80 hover:-translate-y-1 transition-all duration-200"
       >
-        {IconComponent && <IconComponent size={20} className="flex-shrink-0 text-black dark:text-white" />}
+        {IconComponent && (
+          <IconComponent size={20} className="flex-shrink-0 text-black dark:text-white" />
+        )}
         <span className="text-sm text-black dark:text-white">{name}</span>
       </motion.div>
     );

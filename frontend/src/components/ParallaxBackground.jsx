@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from "react";
 
 const ParallaxBackground = ({ theme }) => {
   const canvasRef = useRef(null);
@@ -9,7 +9,7 @@ const ParallaxBackground = ({ theme }) => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext("2d");
     let animationFrameId;
 
     const setCanvasSize = () => {
@@ -32,7 +32,7 @@ const ParallaxBackground = ({ theme }) => {
           baseY: Math.random() * canvas.height,
           size: Math.random() * 1.5 + 0.5,
           layer: Math.random() * 4 + 1, // 1-5 layers for different parallax speeds
-          opacity: Math.random() * 0.5 + 0.2
+          opacity: Math.random() * 0.5 + 0.2,
         });
       }
     };
@@ -42,7 +42,7 @@ const ParallaxBackground = ({ theme }) => {
     const handleMouseMove = (e) => {
       mousePos.current = {
         x: e.clientX,
-        y: e.clientY
+        y: e.clientY,
       };
     };
 
@@ -59,17 +59,17 @@ const ParallaxBackground = ({ theme }) => {
         // Apply parallax based on layer
         const parallaxStrength = 100;
         const layerMultiplier = dot.layer / 5;
-        
-        dot.x = dot.baseX - (mouseOffsetX * parallaxStrength * layerMultiplier);
-        dot.y = dot.baseY - (mouseOffsetY * parallaxStrength * layerMultiplier);
+
+        dot.x = dot.baseX - mouseOffsetX * parallaxStrength * layerMultiplier;
+        dot.y = dot.baseY - mouseOffsetY * parallaxStrength * layerMultiplier;
 
         // Draw dot
         ctx.beginPath();
         ctx.arc(dot.x, dot.y, dot.size, 0, Math.PI * 2);
-        const dotColor = theme === 'dark' ? '255, 255, 255' : '0, 0, 0';
+        const dotColor = theme === "dark" ? "255, 255, 255" : "0, 0, 0";
         ctx.fillStyle = `rgba(${dotColor}, ${dot.opacity})`;
         ctx.fill();
-        
+
         // Add subtle glow for larger dots
         if (dot.size > 2) {
           ctx.beginPath();
@@ -84,15 +84,15 @@ const ParallaxBackground = ({ theme }) => {
 
     animate();
 
-    window.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('resize', () => {
+    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("resize", () => {
       setCanvasSize();
       createDots();
     });
 
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('resize', setCanvasSize);
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("resize", setCanvasSize);
       cancelAnimationFrame(animationFrameId);
     };
   }, [theme]);
@@ -101,7 +101,7 @@ const ParallaxBackground = ({ theme }) => {
     <canvas
       ref={canvasRef}
       className="fixed inset-0 pointer-events-none z-0"
-      style={{ background: 'transparent' }}
+      style={{ background: "transparent" }}
     />
   );
 };

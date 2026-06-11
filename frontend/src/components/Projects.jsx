@@ -1,19 +1,19 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { projects, personalInfo } from '../mock';
-import { Github, ExternalLink, BookOpen, Bot, Languages } from 'lucide-react';
+import React from "react";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { projects, personalInfo } from "../mock";
+import { Github, ExternalLink, BookOpen, Bot, Languages } from "lucide-react";
 
 const iconMap = {
   BookOpen,
   Bot,
-  Languages
+  Languages,
 };
 
 const Projects = () => {
   const [ref, inView] = useInView({
     threshold: 0.1,
-    triggerOnce: true
+    triggerOnce: true,
   });
 
   const containerVariants = {
@@ -21,9 +21,9 @@ const Projects = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2
-      }
-    }
+        staggerChildren: 0.2,
+      },
+    },
   };
 
   const itemVariants = {
@@ -31,8 +31,8 @@ const Projects = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6 }
-    }
+      transition: { duration: 0.6 },
+    },
   };
 
   return (
@@ -62,8 +62,8 @@ const Projects = () => {
                 >
                   <div className="relative aspect-[4/3] flex items-center justify-center bg-gray-50/50 dark:bg-[#0a0a0a]/50 group-hover:bg-gray-100/50 dark:group-hover:bg-white/5 transition-colors duration-300">
                     {IconComponent && (
-                      <IconComponent 
-                        size={80} 
+                      <IconComponent
+                        size={80}
                         strokeWidth={1}
                         className="text-gray-400 dark:text-gray-600 group-hover:text-black dark:group-hover:text-white transition-colors duration-300"
                       />
@@ -71,7 +71,9 @@ const Projects = () => {
                   </div>
 
                   <div className="p-6">
-                    <h3 className="text-2xl font-light mb-2 text-black dark:text-white">{project.title}</h3>
+                    <h3 className="text-2xl font-light mb-2 text-black dark:text-white">
+                      {project.title}
+                    </h3>
                     <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
                       {project.description}
                     </p>
