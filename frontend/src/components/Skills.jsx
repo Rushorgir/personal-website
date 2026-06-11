@@ -147,6 +147,23 @@ const Skills = () => {
                 variants={itemVariants}
                 className="text-2xl font-light mb-6 text-black dark:text-white"
               >
+                Database
+              </motion.h3>
+              <motion.div
+                variants={containerVariants}
+                className="grid grid-cols-2 md:grid-cols-4 gap-4"
+              >
+                {skills.database.map((skill, index) => (
+                  <SkillCard key={index} {...skill} />
+                ))}
+              </motion.div>
+            </div>
+
+            <div>
+              <motion.h3
+                variants={itemVariants}
+                className="text-2xl font-light mb-6 text-black dark:text-white"
+              >
                 Tools
               </motion.h3>
               <motion.div

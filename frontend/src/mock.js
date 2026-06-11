@@ -1,18 +1,18 @@
 export const personalInfo = {
   name: "Rushaan Nayyar",
   title: "AI/ML Developer & Computer Science Student",
-  bio: "I'm a first-year CSE (AI/ML) undergrad at VIT Chennai who builds production-grade applications with real-world utility, not assignments, actual products people use. I take full ownership of everything I build, hold myself to a high standard, and I'm always looking for harder problems to solve. Ambiguity doesn't slow me down, it's just another problem to work through.",
+  bio: "I'm a second-year CSE (AI/ML) undergrad at VIT Chennai who builds production-grade applications with real-world utility, not assignments, actual products people use. I take full ownership of everything I build, hold myself to a high standard, and I'm always looking for harder problems to solve. Ambiguity doesn't slow me down, it's just another problem to work through.",
   email: "nayyarrushaan@gmail.com",
   github: "https://github.com/Rushorgir?tab=repositories",
   linkedin: "https://www.linkedin.com/in/rushaan-nayyar",
   education: {
     institution: "VIT Chennai",
     degree: "Computer Science",
-    year: "First Year",
+    year: "Second Year",
   },
   languages: ["English", "Hindi", "German"],
   careerGoal:
-    "I participate in hackathons, contribute to open source, and have developed 4+ real-world projects. I keep a strong focus on solving real problems, not just academic exercises",
+    "I participate in hackathons, contribute to open source, and have developed 4+ real-world projects. I keep a strong focus on solving real problems, not just academic exercises.",
 };
 
 export const projects = [
@@ -72,7 +72,11 @@ export const skills = {
     { name: "Node.js", icon: "Server" },
     { name: "Express.js", icon: "Server" },
     { name: "Flask", icon: "Server" },
+  ],
+  database: [
     { name: "MongoDB", icon: "Database" },
+    { name: "PostgreSQL", icon: "Database" },
+    { name: "SQL", icon: "Database" },
   ],
   tools: [
     { name: "Git", icon: "Code" },
@@ -114,6 +118,17 @@ export const experience = [
       "Active member of the AI/ML departments of HackClub and OSPC, two of VIT Chennai's top-ranked technical clubs.",
       "Actively hosting hackathons and technical events with HackClub",
       "Secured a Top 4 finish in OSPC’s Inter-Club Machine Learning Competition.",
+    ],
+  },
+  {
+    id: 4,
+    year: "June 2026",
+    title: "SDE Intern",
+    organization: "Manipal Business Solutions",
+    description: [
+      "Developed and optimized AI-powered bots calling on-field agents, directly impacting over 7000 users.",
+      "Conducted rigorous quality assurance and identified critical bugs in deployed applications and websites.",
+      "Engineered automated testing scripts to streamline the QA process for web and mobile platforms.",
     ],
   },
 ];
