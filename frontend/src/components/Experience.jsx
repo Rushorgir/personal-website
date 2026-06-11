@@ -28,32 +28,31 @@ const Experience = () => {
     },
   };
 
-  const renderContent = (item, isEven) => (
-    <div className={`relative w-full ${isEven ? "border-l-2 md:border-l-0 md:border-r-2 pl-8 md:pl-0 md:pr-12 md:text-right" : "border-l-2 pl-8 md:pl-12 md:text-left"} border-gray-200 dark:border-[#333]`}>
-      
+  const renderContent = (item, isRightAligned) => (
+    <div
+      className={`relative w-full ${isRightAligned ? "border-l-2 md:border-l-0 md:border-r-2 pl-8 md:pl-0 md:pr-12 md:text-right" : "border-l-2 pl-8 md:pl-12 md:text-left"} border-gray-200 dark:border-[#333]`}
+    >
       {/* Mobile Dot */}
       <div className="md:hidden absolute -left-[9px] top-0 w-4 h-4 bg-black dark:bg-white rounded-full"></div>
-      
+
       {/* Desktop Dot */}
-      <div className={`hidden md:block absolute top-0 w-4 h-4 bg-black dark:bg-white rounded-full ${isEven ? '-right-[9px]' : '-left-[9px]'}`}></div>
+      <div
+        className={`hidden md:block absolute top-0 w-4 h-4 bg-black dark:bg-white rounded-full ${isRightAligned ? "-right-[9px]" : "-left-[9px]"}`}
+      ></div>
 
       <p className="text-sm text-gray-500 dark:text-gray-500 mb-2">{item.year}</p>
-      <h3 className="text-2xl font-light mb-1 text-black dark:text-white">
-        {item.title}
-      </h3>
-      <p className="text-lg text-gray-600 dark:text-gray-400 mb-4">
-        {item.organization}
-      </p>
+      <h3 className="text-2xl font-light mb-1 text-black dark:text-white">{item.title}</h3>
+      <p className="text-lg text-gray-600 dark:text-gray-400 mb-4">{item.organization}</p>
       {Array.isArray(item.description) ? (
-        <ul className="list-disc pl-5 md:pl-0 md:list-none text-gray-700 dark:text-gray-300 leading-relaxed space-y-2">
+        <ul
+          className={`list-disc pl-5 ${isRightAligned ? "md:pl-0 md:list-inside" : "md:pl-5 md:list-outside"} text-gray-700 dark:text-gray-300 leading-relaxed space-y-2`}
+        >
           {item.description.map((point, pointIndex) => (
             <li key={pointIndex}>{point}</li>
           ))}
         </ul>
       ) : (
-        <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-          {item.description}
-        </p>
+        <p className="text-gray-700 dark:text-gray-300 leading-relaxed">{item.description}</p>
       )}
     </div>
   );
@@ -77,14 +76,10 @@ const Experience = () => {
           <div className="relative">
             <div className="space-y-16 md:space-y-24">
               {experience.map((item, index) => {
-                const isEven = index % 2 === 0;
+                const isRightAligned = index % 2 !== 0;
                 return (
-                  <motion.div
-                    key={item.id}
-                    variants={itemVariants}
-                    className="w-full"
-                  >
-                    {renderContent(item, isEven)}
+                  <motion.div key={item.id} variants={itemVariants} className="w-full">
+                    {renderContent(item, isRightAligned)}
                   </motion.div>
                 );
               })}
