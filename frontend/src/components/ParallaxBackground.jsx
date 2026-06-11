@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 
 const ParallaxBackground = ({ theme }) => {
   const canvasRef = useRef(null);

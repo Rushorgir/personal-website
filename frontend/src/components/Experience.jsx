@@ -45,7 +45,7 @@ const Experience = () => {
           </motion.h2>
 
           <div className="space-y-12">
-            {experience.map((item, index) => (
+            {experience.map((item) => (
               <motion.div
                 key={item.id}
                 variants={itemVariants}

@@ -31,6 +31,19 @@ export default [
       ...react.configs["jsx-runtime"].rules,
       "react/react-in-jsx-scope": "off",
       "react/prop-types": "off",
+      "no-unused-vars": [
+        "error",
+        {
+          argsIgnorePattern: "^_",
+          varsIgnorePattern: "^(React|_)",
+        },
+      ],
+      "react/no-unknown-property": [
+        "error",
+        {
+          ignore: ["cmdk-input-wrapper"],
+        },
+      ],
     },
     settings: {
       react: {

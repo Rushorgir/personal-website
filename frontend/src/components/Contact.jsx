@@ -57,8 +57,8 @@ const Contact = () => {
             variants={itemVariants}
             className="text-xl text-gray-600 dark:text-gray-400 mb-12 max-w-2xl mx-auto"
           >
-            I'm always open to discussing new projects, creative ideas, or opportunities to be part
-            of your visions.
+            I&apos;m always open to discussing new projects, creative ideas, or opportunities to be
+            part of your visions.
           </motion.p>
 
           <motion.div variants={itemVariants} className="flex items-center justify-center gap-6">
