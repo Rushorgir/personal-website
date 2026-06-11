@@ -70,7 +70,8 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "lint:fix": "prettier --write . && eslint . --fix",
-    "test:run": "npm test"
+    "test:run": "npm test",
+    "test:ci": "cd .. && act"
   },
   "browserslist": {
     "production": [
