@@ -76,7 +76,7 @@ export const skills = {
   database: [
     { name: "MongoDB", icon: "Database" },
     { name: "PostgreSQL", icon: "Database" },
-    { name: "SQL", icon: "Database" },
+    { name: "MySQL", icon: "Database" },
   ],
   tools: [
     { name: "Git", icon: "Code" },
