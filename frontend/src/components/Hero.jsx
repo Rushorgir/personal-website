@@ -42,18 +42,11 @@ const Hero = ({ theme }) => {
 
     camera.position.z = 5;
 
-    let scrollY = 0;
-    const handleScroll = () => {
-      scrollY = window.scrollY;
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
     const animate = () => {
       requestAnimationFrame(animate);
       torus.rotation.x += 0.005;
       torus.rotation.y += 0.005;
-      torus.rotation.z = scrollY * 0.001;
+      torus.rotation.z = window.scrollY * 0.001;
       renderer.render(scene, camera);
     };
 
@@ -69,7 +62,6 @@ const Hero = ({ theme }) => {
 
     return () => {
       window.removeEventListener("resize", handleResize);
-      window.removeEventListener("scroll", handleScroll);
       geometry.dispose();
       material.dispose();
       renderer.dispose();
@@ -161,15 +153,17 @@ const Hero = ({ theme }) => {
         </motion.div>
       </div>
 
-      <motion.button
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 1 }}
-        onClick={scrollToAbout}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce"
-      >
-        <ArrowDown size={32} className="text-gray-400 dark:text-gray-600" />
-      </motion.button>
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20">
+        <motion.button
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 1 }}
+          onClick={scrollToAbout}
+          className="animate-bounce"
+        >
+          <ArrowDown size={32} className="text-gray-400 dark:text-gray-600" />
+        </motion.button>
+      </div>
     </section>
   );
 };

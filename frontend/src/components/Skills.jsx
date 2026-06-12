@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { useScrollLineRegister } from "./ScrollLineContext";
 import { skills } from "../mock";
 import {
   Code2,
@@ -33,49 +34,79 @@ const iconMap = {
   Github,
   Globe,
 };
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
 
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5 },
+  },
+};
+
+const SkillCard = ({ name, icon }) => {
+  const IconComponent = iconMap[icon];
+  return (
+    <div className="flex items-center gap-3 p-4 bg-white/70 dark:bg-[#0a0a0a]/70 backdrop-blur-md border border-gray-200 dark:border-[#333] hover:border-black dark:hover:border-white hover:bg-white/80 dark:hover:bg-[#0a0a0a]/80 hover:-translate-y-1 transition-all duration-200">
+      {IconComponent && (
+        <IconComponent size={20} className="flex-shrink-0 text-black dark:text-white" />
+      )}
+      <span className="text-sm text-black dark:text-white">{name}</span>
+    </div>
+  );
+};
+
+const SkillCategory = ({ id, title, data }) => {
+  const registerPoint = useScrollLineRegister();
+  const titleRef = React.useRef(null);
+
+  React.useEffect(() => {
+    registerPoint(id, titleRef);
+  }, [id, registerPoint]);
+
+  return (
+    <div>
+      <div ref={titleRef} className="mb-6 inline-block">
+        <motion.h3
+          variants={itemVariants}
+          className="text-2xl font-light text-black dark:text-white relative z-20"
+        >
+          {title}
+        </motion.h3>
+      </div>
+      <motion.div variants={containerVariants} className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        {data.map((skill, index) => (
+          <SkillCard key={index} {...skill} />
+        ))}
+      </motion.div>
+    </div>
+  );
+};
 const Skills = () => {
+  const categories = [
+    { id: "skills-0", title: "Languages", data: skills.languages },
+    { id: "skills-1", title: "Frontend", data: skills.frontend },
+    { id: "skills-2", title: "Backend", data: skills.backend },
+    { id: "skills-3", title: "Database", data: skills.database },
+    { id: "skills-4", title: "Tools", data: skills.tools },
+  ];
+
   const [ref, inView] = useInView({
-    threshold: 0.1,
+    threshold: 0.02,
     triggerOnce: true,
   });
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5 },
-    },
-  };
-
-  const SkillCard = ({ name, icon }) => {
-    const IconComponent = iconMap[icon];
-    return (
-      <motion.div
-        variants={itemVariants}
-        className="flex items-center gap-3 p-4 bg-white/70 dark:bg-[#0a0a0a]/70 backdrop-blur-md border border-gray-200 dark:border-[#333] hover:border-black dark:hover:border-white hover:bg-white/80 dark:hover:bg-[#0a0a0a]/80 hover:-translate-y-1 transition-all duration-200"
-      >
-        {IconComponent && (
-          <IconComponent size={20} className="flex-shrink-0 text-black dark:text-white" />
-        )}
-        <span className="text-sm text-black dark:text-white">{name}</span>
-      </motion.div>
-    );
-  };
-
   return (
-    <section id="skills" className="py-24 md:py-32 bg-gray-50/50 dark:bg-[#0a0a0a]/50">
+    <section id="skills" className="py-24 md:py-32 relative z-10">
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
           ref={ref}
@@ -91,90 +122,9 @@ const Skills = () => {
           </motion.h2>
 
           <div className="space-y-12">
-            <div>
-              <motion.h3
-                variants={itemVariants}
-                className="text-2xl font-light mb-6 text-black dark:text-white"
-              >
-                Languages
-              </motion.h3>
-              <motion.div
-                variants={containerVariants}
-                className="grid grid-cols-2 md:grid-cols-4 gap-4"
-              >
-                {skills.languages.map((skill, index) => (
-                  <SkillCard key={index} {...skill} />
-                ))}
-              </motion.div>
-            </div>
-
-            <div>
-              <motion.h3
-                variants={itemVariants}
-                className="text-2xl font-light mb-6 text-black dark:text-white"
-              >
-                Frontend
-              </motion.h3>
-              <motion.div
-                variants={containerVariants}
-                className="grid grid-cols-2 md:grid-cols-4 gap-4"
-              >
-                {skills.frontend.map((skill, index) => (
-                  <SkillCard key={index} {...skill} />
-                ))}
-              </motion.div>
-            </div>
-
-            <div>
-              <motion.h3
-                variants={itemVariants}
-                className="text-2xl font-light mb-6 text-black dark:text-white"
-              >
-                Backend
-              </motion.h3>
-              <motion.div
-                variants={containerVariants}
-                className="grid grid-cols-2 md:grid-cols-4 gap-4"
-              >
-                {skills.backend.map((skill, index) => (
-                  <SkillCard key={index} {...skill} />
-                ))}
-              </motion.div>
-            </div>
-
-            <div>
-              <motion.h3
-                variants={itemVariants}
-                className="text-2xl font-light mb-6 text-black dark:text-white"
-              >
-                Database
-              </motion.h3>
-              <motion.div
-                variants={containerVariants}
-                className="grid grid-cols-2 md:grid-cols-4 gap-4"
-              >
-                {skills.database.map((skill, index) => (
-                  <SkillCard key={index} {...skill} />
-                ))}
-              </motion.div>
-            </div>
-
-            <div>
-              <motion.h3
-                variants={itemVariants}
-                className="text-2xl font-light mb-6 text-black dark:text-white"
-              >
-                Tools
-              </motion.h3>
-              <motion.div
-                variants={containerVariants}
-                className="grid grid-cols-2 md:grid-cols-4 gap-4"
-              >
-                {skills.tools.map((skill, index) => (
-                  <SkillCard key={index} {...skill} />
-                ))}
-              </motion.div>
-            </div>
+            {categories.map((cat) => (
+              <SkillCategory key={cat.id} id={cat.id} title={cat.title} data={cat.data} />
+            ))}
           </div>
         </motion.div>
       </div>

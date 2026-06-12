@@ -35,7 +35,7 @@ const Header = ({ theme, toggleTheme }) => {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-white/80 dark:bg-[#0a0a0a]/80 backdrop-blur-md border-b border-gray-200 dark:border-[#333]"
+          ? "bg-white/70 dark:bg-[#0a0a0a]/70 backdrop-blur-xl border-b border-gray-200/80 dark:border-[#333]/80"
           : "bg-transparent"
       }`}
     >

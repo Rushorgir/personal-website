@@ -1,12 +1,20 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { useScrollLineRegister } from "./ScrollLineContext";
 import { personalInfo } from "../mock";
 import { GraduationCap, Globe2, Target } from "lucide-react";
 
 const About = () => {
+  const registerPoint = useScrollLineRegister();
+  const dotRef = React.useRef(null);
+
+  React.useEffect(() => {
+    registerPoint("about-dot", dotRef);
+  }, [registerPoint]);
+
   const [ref, inView] = useInView({
-    threshold: 0.2,
+    threshold: 0.02,
     triggerOnce: true,
   });
 
@@ -38,15 +46,26 @@ const About = () => {
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
         >
-          <motion.h2
-            variants={itemVariants}
-            className="text-5xl md:text-6xl font-light tracking-tight mb-16 text-center text-black dark:text-white"
-          >
-            About Me
-          </motion.h2>
+          <div className="relative flex flex-col items-center">
+            <motion.h2
+              variants={itemVariants}
+              className="text-5xl md:text-6xl font-light tracking-tight mb-8 text-center text-black dark:text-white"
+            >
+              About Me
+            </motion.h2>
+            {/* The dot from which the line starts */}
+            <div ref={dotRef} className="w-3 h-3 bg-black dark:bg-white rounded-full mb-16 z-10" />
+          </div>
 
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            <motion.div variants={itemVariants} className="space-y-6">
+            <motion.div variants={itemVariants} className="space-y-6 md:p-8 relative z-10">
+              <div
+                className="absolute inset-0 md:bg-white/40 md:dark:bg-[#0a0a0a]/40 md:backdrop-blur-sm -z-10 pointer-events-none hidden md:block"
+                style={{
+                  WebkitMaskImage: "radial-gradient(ellipse at center, black 40%, transparent 80%)",
+                  maskImage: "radial-gradient(ellipse at center, black 40%, transparent 80%)",
+                }}
+              ></div>
               <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
                 {personalInfo.bio}
               </p>

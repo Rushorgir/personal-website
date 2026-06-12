@@ -12,6 +12,8 @@ import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import ParallaxBackground from "./components/ParallaxBackground";
 import ScrollToTop from "./components/ScrollToTop";
+import { ScrollLineProvider } from "./components/ScrollLineContext";
+import GlobalScrollLine from "./components/GlobalScrollLine";
 
 function App() {
   const [theme, setTheme] = useState(() => {
@@ -62,20 +64,23 @@ function App() {
 
   return (
     <div className={`App ${theme}`}>
-      <BrowserRouter>
-        <ParallaxBackground theme={theme} />
-        <Header theme={theme} toggleTheme={toggleTheme} />
-        <main className="relative z-10">
-          <Hero theme={theme} />
-          <About />
-          <Projects />
-          <Skills />
-          <Experience />
-          <Contact />
-        </main>
-        <Footer />
-        <ScrollToTop />
-      </BrowserRouter>
+      <ScrollLineProvider>
+        <BrowserRouter>
+          <ParallaxBackground theme={theme} />
+          <Header theme={theme} toggleTheme={toggleTheme} />
+          <main className="relative z-10">
+            <GlobalScrollLine />
+            <Hero theme={theme} />
+            <About />
+            <Projects />
+            <Skills />
+            <Experience />
+            <Contact />
+          </main>
+          <Footer />
+          <ScrollToTop />
+        </BrowserRouter>
+      </ScrollLineProvider>
     </div>
   );
 }

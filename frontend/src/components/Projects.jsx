@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { useScrollLineRegister } from "./ScrollLineContext";
 import { projects, personalInfo } from "../mock";
 import { Github, ExternalLink, BookOpen, Bot, Languages } from "lucide-react";
 
@@ -11,8 +12,15 @@ const iconMap = {
 };
 
 const Projects = () => {
+  const registerPoint = useScrollLineRegister();
+  const btnRef = React.useRef(null);
+
+  React.useEffect(() => {
+    registerPoint("projects-btn", btnRef);
+  }, [registerPoint]);
+
   const [ref, inView] = useInView({
-    threshold: 0.1,
+    threshold: 0.02,
     triggerOnce: true,
   });
 
@@ -21,7 +29,7 @@ const Projects = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
+        staggerChildren: 0.3,
       },
     },
   };
@@ -31,12 +39,12 @@ const Projects = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6 },
+      transition: { duration: 1.2, ease: "easeOut" },
     },
   };
 
   return (
-    <section id="projects" className="py-24 md:py-32">
+    <section id="projects" className="py-24 md:py-32 relative">
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
           ref={ref}
@@ -46,9 +54,18 @@ const Projects = () => {
         >
           <motion.h2
             variants={itemVariants}
-            className="text-5xl md:text-6xl font-light tracking-tight mb-16 text-center text-black dark:text-white"
+            className="text-5xl md:text-6xl font-light tracking-tight mb-16 text-center"
           >
-            Featured Projects
+            <span className="relative inline-block px-8 py-4 z-20">
+              <span
+                className="absolute inset-0 bg-white/10 dark:bg-[#0a0a0a]/10 backdrop-blur-md -z-10 pointer-events-none"
+                style={{
+                  WebkitMaskImage: "radial-gradient(ellipse at center, black 30%, transparent 70%)",
+                  maskImage: "radial-gradient(ellipse at center, black 30%, transparent 70%)",
+                }}
+              ></span>
+              <span className="relative z-10 text-black dark:text-white">Featured Projects</span>
+            </span>
           </motion.h2>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
@@ -94,7 +111,7 @@ const Projects = () => {
                         href={project.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 text-sm hover:underline text-black dark:text-white"
+                        className="flex items-center gap-2 text-sm hover:underline text-black dark:text-white relative z-20"
                       >
                         <Github size={16} />
                         Code
@@ -104,7 +121,7 @@ const Projects = () => {
                           href={project.liveUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center gap-2 text-sm hover:underline text-black dark:text-white"
+                          className="flex items-center gap-2 text-sm hover:underline text-black dark:text-white relative z-20"
                         >
                           <ExternalLink size={16} />
                           Demo
@@ -117,12 +134,13 @@ const Projects = () => {
             })}
           </div>
 
-          <motion.div variants={itemVariants} className="text-center">
+          <motion.div variants={itemVariants} className="text-center relative">
             <a
+              ref={btnRef}
               href={personalInfo.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="github-btn inline-flex items-center gap-2 px-8 py-3 border border-black dark:border-white text-black dark:text-white hover:bg-black hover:text-white dark:hover:bg-white transition-colors duration-200"
+              className="github-btn relative z-20 inline-flex items-center gap-2 px-8 py-3 border border-black dark:border-white text-black dark:text-white bg-white/10 dark:bg-[#0a0a0a]/10 backdrop-blur-md overflow-hidden hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors duration-200"
             >
               <Github size={20} />
               See More Projects on GitHub
