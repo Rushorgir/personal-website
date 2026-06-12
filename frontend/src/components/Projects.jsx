@@ -3,12 +3,13 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useScrollLineRegister } from "./ScrollLineContext";
 import { projects, personalInfo } from "../mock";
-import { Github, ExternalLink, BookOpen, Bot, Languages } from "lucide-react";
+import { Github, ExternalLink, BookOpen, Bot, Languages, AlarmClock } from "lucide-react";
 
 const iconMap = {
   BookOpen,
   Bot,
   Languages,
+  AlarmClock,
 };
 
 const Projects = () => {

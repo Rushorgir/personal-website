@@ -35,7 +35,7 @@ export const projects = [
       "A tool designed to help VIT Chennai students easily calculate and manage their on-duty hours.",
     longDescription:
       "A web application built to assist VIT Chennai students in calculating and managing their on-duty hours. It features a secure login system backed by PostgreSQL and is hosted on Vercel.",
-    icon: "BookOpen",
+    icon: "AlarmClock",
     technologies: ["JavaScript", "PostgreSQL", "Vercel"],
     githubUrl: "https://github.com/Rushorgir/OD-Calculator",
     liveUrl: "https://od-calculator-one.vercel.app/",
