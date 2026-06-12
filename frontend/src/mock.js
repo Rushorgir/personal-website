@@ -50,7 +50,7 @@ export const projects = [
     icon: "Languages",
     technologies: ["Python", "HTML/CSS/JS", "Ollama", "NLP"],
     githubUrl: "https://github.com/Rushorgir/Hermes",
-    liveUrl: null,
+    liveUrl: "https://hermes-translation-tool.vercel.app/",
   },
 ];
 
