@@ -94,9 +94,9 @@ export const experience = [
     title: "SDE Intern",
     organization: "Manipal Business Solutions",
     description: [
-      "Developed and optimized AI-powered bots calling on-field agents and customers, directly impacting over 10,000 users regularly.",
-      "Conducted rigorous quality assurance and identified critical bugs in deployed applications and websites.",
-      "Engineered automated testing scripts to streamline the QA process for web and mobile platforms.",
+      "Conversational AI Deployment: Engineered, revamped, and deployed production-ready conversational bots that automated live user calls and expanded operational capabilities.",
+      "Bot Optimization & Call Analytics: Analyzed real-world conversation workflows to resolve language conversion bugs, optimize conversational flows, and improve automated objection handling.  ",
+      "Cross-Platform QA & Campaign Execution: Conducted comprehensive QA testing for company web and mobile applications while managing large-scale datasets to execute targeted outreach campaigns.",
     ],
   },
   {
