@@ -214,13 +214,21 @@ const GlobalScrollLine = () => {
           if (hiddenDots.includes(key)) return null;
 
           const pt = coords[key];
+
+          let colorClass = "fill-black dark:fill-white";
+          if (key === "skills-0") colorClass = "fill-rose-500 dark:fill-rose-400";
+          else if (key === "skills-1") colorClass = "fill-sky-500 dark:fill-sky-400";
+          else if (key === "skills-2") colorClass = "fill-emerald-500 dark:fill-emerald-400";
+          else if (key === "skills-3") colorClass = "fill-violet-500 dark:fill-violet-400";
+          else if (key === "skills-4") colorClass = "fill-amber-500 dark:fill-amber-400";
+
           return (
             <circle
               key={key}
               cx={pt.x}
               cy={pt.y}
               r="4"
-              className="fill-black dark:fill-white dark:[filter:url(#neonGlow-dot-dark)] [filter:url(#neonGlow-dot-light)]"
+              className={`${colorClass} dark:[filter:url(#neonGlow-dot-dark)] [filter:url(#neonGlow-dot-light)]`}
             />
           );
         })}

@@ -28,11 +28,13 @@ A **minimal, monochrome portfolio** to showcase my journey as a computer science
 
 - **Minimal Monochrome UI** — Elegant, grayscale palette for a focused look
 - **Interactive 3D Hero** — Three.js wireframe animation greeting visitors
+- **Interactive Typewriter Header** — Dynamic monospace brand text cycling between "Rushaan Nayyar" and "Rushorgir" using theme-aware Minecraft color transitions
 - **Ultra-Smooth Navigation** — Section scroll and animated transitions
 - **Responsive Design** — Works perfectly on phone, tablet, and desktop
 - **SEO Optimized** — Meta tags for better search and sharing
 - **Vercel Deployable** — Pre-configured for SPA routing
 - **Modern Scroll Indicators** — SVG path drawing on scroll
+- **Deprecation-Resistant Brand Icons** — Custom standalone SVG components for GitHub and LinkedIn to isolate the app from future package removals
 
 ---
 
@@ -42,7 +44,7 @@ A **minimal, monochrome portfolio** to showcase my journey as a computer science
 - Tailwind CSS (utility-first CSS)
 - Three.js (3D Graphics)
 - Framer Motion (Animations)
-- Lucide React (Icon set)
+- Lucide React (Icon set, supplemented with custom brand SVGs)
 - Vercel (Hosting)
 
 ---

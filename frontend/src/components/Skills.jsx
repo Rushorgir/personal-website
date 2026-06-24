@@ -1,5 +1,5 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, useInView as useInViewFM } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useScrollLineRegister } from "./ScrollLineContext";
 import { skills } from "../mock";
@@ -18,6 +18,8 @@ import {
   Github,
   Globe,
 } from "lucide-react";
+import SectionTitle from "./SectionTitle";
+import { containerVariants, itemVariants } from "../utils/animations";
 
 const iconMap = {
   Code2,
@@ -33,24 +35,6 @@ const iconMap = {
   Code,
   Github,
   Globe,
-};
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5 },
-  },
 };
 
 const SkillCard = ({ name, icon }) => {
@@ -92,6 +76,9 @@ const SkillCategory = ({ id, title, data }) => {
   );
 };
 const Skills = () => {
+  const titleRef = React.useRef(null);
+  const isTitleInView = useInViewFM(titleRef, { margin: "0px 0px -40% 0px", once: true });
+
   const categories = [
     { id: "skills-0", title: "Languages", data: skills.languages },
     { id: "skills-1", title: "Frontend", data: skills.frontend },
@@ -114,12 +101,12 @@ const Skills = () => {
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
         >
-          <motion.h2
-            variants={itemVariants}
-            className="text-5xl md:text-6xl font-light tracking-tight mb-16 text-center text-black dark:text-white"
-          >
-            Skills & Technologies
-          </motion.h2>
+          <SectionTitle
+            title="Skills & Technologies"
+            isTitleInView={isTitleInView}
+            titleRef={titleRef}
+            itemVariants={itemVariants}
+          />
 
           <div className="space-y-12">
             {categories.map((cat) => (

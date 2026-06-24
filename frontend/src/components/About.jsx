@@ -1,13 +1,17 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, useInView as useInViewFM } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useScrollLineRegister } from "./ScrollLineContext";
 import { personalInfo } from "../mock";
 import { GraduationCap, Globe2, Target } from "lucide-react";
+import SectionTitle from "./SectionTitle";
+import { containerVariants, itemVariants } from "../utils/animations";
 
 const About = () => {
   const registerPoint = useScrollLineRegister();
   const dotRef = React.useRef(null);
+  const titleRef = React.useRef(null);
+  const isTitleInView = useInViewFM(titleRef, { margin: "0px 0px -40% 0px", once: true });
 
   React.useEffect(() => {
     registerPoint("about-dot", dotRef);
@@ -18,24 +22,7 @@ const About = () => {
     triggerOnce: true,
   });
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  };
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6 },
-    },
-  };
 
   return (
     <section id="about" className="py-24 md:py-32">
@@ -47,12 +34,13 @@ const About = () => {
           animate={inView ? "visible" : "hidden"}
         >
           <div className="relative flex flex-col items-center">
-            <motion.h2
-              variants={itemVariants}
-              className="text-5xl md:text-6xl font-light tracking-tight mb-8 text-center text-black dark:text-white"
-            >
-              About Me
-            </motion.h2>
+            <SectionTitle
+              title="About Me"
+              isTitleInView={isTitleInView}
+              titleRef={titleRef}
+              itemVariants={itemVariants}
+              className="mb-8"
+            />
             {/* The dot from which the line starts */}
             <div ref={dotRef} className="w-3 h-3 bg-black dark:bg-white rounded-full mb-16 z-10" />
           </div>
@@ -66,17 +54,17 @@ const About = () => {
                   maskImage: "radial-gradient(ellipse at center, black 40%, transparent 80%)",
                 }}
               ></div>
-              <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+              <p className="text-lg text-gray-800 dark:text-gray-200 leading-relaxed">
                 {personalInfo.bio}
               </p>
-              <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+              <p className="text-lg text-gray-800 dark:text-gray-200 leading-relaxed">
                 {personalInfo.careerGoal}
               </p>
             </motion.div>
 
             <motion.div variants={itemVariants} className="space-y-6">
-              <div className="flex items-start gap-4 p-6 bg-white/70 dark:bg-[#0a0a0a]/70 backdrop-blur-md border border-gray-200 dark:border-[#333] hover:border-black dark:hover:border-white hover:bg-white/80 dark:hover:bg-[#0a0a0a]/80 transition-all duration-200">
-                <GraduationCap className="w-8 h-8 flex-shrink-0 text-black dark:text-white" />
+              <div className="group flex items-start gap-4 p-6 bg-white/70 dark:bg-[#0a0a0a]/70 backdrop-blur-md border border-gray-200 dark:border-[#333] hover:border-black dark:hover:border-white hover:bg-white/80 dark:hover:bg-[#0a0a0a]/80 transition-all duration-200">
+                <GraduationCap className="w-8 h-8 flex-shrink-0 text-emerald-500/80 dark:text-emerald-400/80 group-hover:text-emerald-500 dark:group-hover:text-emerald-400 transition-colors" />
                 <div>
                   <h3 className="font-normal text-lg mb-1 text-black dark:text-white">Education</h3>
                   <p className="text-gray-600 dark:text-gray-400">
@@ -88,8 +76,8 @@ const About = () => {
                 </div>
               </div>
 
-              <div className="flex items-start gap-4 p-6 bg-white/70 dark:bg-[#0a0a0a]/70 backdrop-blur-md border border-gray-200 dark:border-[#333] hover:border-black dark:hover:border-white hover:bg-white/80 dark:hover:bg-[#0a0a0a]/80 transition-all duration-200">
-                <Globe2 className="w-8 h-8 flex-shrink-0 text-black dark:text-white" />
+              <div className="group flex items-start gap-4 p-6 bg-white/70 dark:bg-[#0a0a0a]/70 backdrop-blur-md border border-gray-200 dark:border-[#333] hover:border-black dark:hover:border-white hover:bg-white/80 dark:hover:bg-[#0a0a0a]/80 transition-all duration-200">
+                <Globe2 className="w-8 h-8 flex-shrink-0 text-sky-500/80 dark:text-sky-400/80 group-hover:text-sky-500 dark:group-hover:text-sky-400 transition-colors" />
                 <div>
                   <h3 className="font-normal text-lg mb-1 text-black dark:text-white">Languages</h3>
                   <p className="text-gray-600 dark:text-gray-400">
@@ -98,8 +86,8 @@ const About = () => {
                 </div>
               </div>
 
-              <div className="flex items-start gap-4 p-6 bg-white/70 dark:bg-[#0a0a0a]/70 backdrop-blur-md border border-gray-200 dark:border-[#333] hover:border-black dark:hover:border-white hover:bg-white/80 dark:hover:bg-[#0a0a0a]/80 transition-all duration-200">
-                <Target className="w-8 h-8 flex-shrink-0 text-black dark:text-white" />
+              <div className="group flex items-start gap-4 p-6 bg-white/70 dark:bg-[#0a0a0a]/70 backdrop-blur-md border border-gray-200 dark:border-[#333] hover:border-black dark:hover:border-white hover:bg-white/80 dark:hover:bg-[#0a0a0a]/80 transition-all duration-200">
+                <Target className="w-8 h-8 flex-shrink-0 text-red-500/80 dark:text-red-400/80 group-hover:text-red-500 dark:group-hover:text-red-400 transition-colors" />
                 <div>
                   <h3 className="font-normal text-lg mb-1 text-black dark:text-white">Goals</h3>
                   <p className="text-gray-600 dark:text-gray-400">

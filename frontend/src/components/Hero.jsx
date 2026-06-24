@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import * as THREE from "three";
 import { personalInfo } from "../mock";
 import { ArrowDown } from "lucide-react";
+import { smoothScrollTo } from "../utils/animations";
 
 const Hero = ({ theme }) => {
   const canvasRef = useRef(null);
@@ -78,21 +79,24 @@ const Hero = ({ theme }) => {
   const scrollToAbout = () => {
     const element = document.getElementById("about");
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+      const targetY = element.getBoundingClientRect().top + window.scrollY;
+      smoothScrollTo(targetY);
     }
   };
 
   const scrollToProjects = () => {
     const element = document.getElementById("projects");
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+      const targetY = element.getBoundingClientRect().top + window.scrollY;
+      smoothScrollTo(targetY);
     }
   };
 
   const scrollToContact = () => {
     const element = document.getElementById("contact");
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+      const targetY = element.getBoundingClientRect().top + window.scrollY;
+      smoothScrollTo(targetY);
     }
   };
 

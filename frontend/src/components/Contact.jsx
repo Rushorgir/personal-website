@@ -1,10 +1,13 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, useInView as useInViewFM } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useScrollLineRegister } from "./ScrollLineContext";
 import { socialLinks } from "../mock";
-import { Github, Linkedin, Mail } from "lucide-react";
+import { Mail } from "lucide-react";
+import { Github, Linkedin } from "./BrandIcons";
 import ObfuscatedEmail from "./ObfuscatedEmail";
+import SectionTitle from "./SectionTitle";
+import { containerVariants, itemVariants } from "../utils/animations";
 
 const iconMap = {
   Github,
@@ -15,6 +18,7 @@ const iconMap = {
 const Contact = () => {
   const registerPoint = useScrollLineRegister();
   const titleRef = React.useRef(null);
+  const isTitleInView = useInViewFM(titleRef, { margin: "0px 0px -40% 0px", once: true });
 
   React.useEffect(() => {
     registerPoint("contact-title", titleRef);
@@ -25,24 +29,7 @@ const Contact = () => {
     triggerOnce: true,
   });
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  };
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6 },
-    },
-  };
 
   return (
     <section id="contact" className="py-24 md:py-32 relative z-20">
@@ -54,23 +41,15 @@ const Contact = () => {
           animate={inView ? "visible" : "hidden"}
           className="text-center"
         >
-          <motion.h2
-            variants={itemVariants}
-            className="text-5xl md:text-6xl font-light tracking-tight mb-8 inline-block relative"
-          >
-            {/* Hidden anchor point positioned higher up to terminate the scroll line early and hide it completely */}
-            <div ref={titleRef} className="absolute left-1/2 top-4 w-0 h-0 pointer-events-none" />
-            <span className="relative inline-block px-8 py-4 z-20">
-              <span
-                className="absolute inset-0 bg-white/10 dark:bg-[#0a0a0a]/10 backdrop-blur-md -z-10 pointer-events-none"
-                style={{
-                  WebkitMaskImage: "radial-gradient(ellipse at center, black 30%, transparent 70%)",
-                  maskImage: "radial-gradient(ellipse at center, black 30%, transparent 70%)",
-                }}
-              ></span>
-              <span className="relative z-10 text-black dark:text-white">Get In Touch</span>
-            </span>
-          </motion.h2>
+          <div className="relative inline-block">
+            <div ref={titleRef} className="absolute left-1/2 top-0 w-0 h-0 pointer-events-none" />
+            <SectionTitle
+              title="Get In Touch"
+              isTitleInView={isTitleInView}
+              itemVariants={itemVariants}
+              className="mb-8"
+            />
+          </div>
 
           <motion.div variants={itemVariants} className="md:p-8 inline-block mb-12 relative z-10">
             <div
@@ -90,14 +69,25 @@ const Contact = () => {
             {socialLinks.map((link, index) => {
               const IconComponent = iconMap[link.icon];
 
+              let colorClass = "";
+              if (link.icon === "Mail")
+                colorClass =
+                  "text-rose-500/80 dark:text-rose-400/80 group-hover:text-rose-500 dark:group-hover:text-rose-400";
+              else if (link.icon === "Linkedin")
+                colorClass =
+                  "text-sky-500/80 dark:text-sky-400/80 group-hover:text-sky-500 dark:group-hover:text-sky-400";
+              else if (link.icon === "Github")
+                colorClass =
+                  "text-violet-500/80 dark:text-violet-400/80 group-hover:text-violet-500 dark:group-hover:text-violet-400";
+
               // Use ObfuscatedEmail for email links
               if (link.icon === "Mail") {
                 return (
                   <ObfuscatedEmail
                     key={index}
-                    className="p-4 border border-gray-300 dark:border-[#333] hover:border-black dark:hover:border-white hover:-translate-y-1 transition-all duration-200 text-black dark:text-white"
+                    className="group p-4 border border-gray-300 dark:border-[#333] hover:border-black dark:hover:border-white hover:-translate-y-1 transition-all duration-200 text-black dark:text-white"
                   >
-                    <Mail size={24} />
+                    <Mail size={24} className={`${colorClass} transition-colors`} />
                   </ObfuscatedEmail>
                 );
               }
@@ -108,10 +98,12 @@ const Contact = () => {
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-4 border border-gray-300 dark:border-[#333] hover:border-black dark:hover:border-white hover:-translate-y-1 transition-all duration-200 text-black dark:text-white"
+                  className="group p-4 border border-gray-300 dark:border-[#333] hover:border-black dark:hover:border-white hover:-translate-y-1 transition-all duration-200 text-black dark:text-white"
                   aria-label={link.name}
                 >
-                  {IconComponent && <IconComponent size={24} />}
+                  {IconComponent && (
+                    <IconComponent size={24} className={`${colorClass} transition-colors`} />
+                  )}
                 </a>
               );
             })}

@@ -1,9 +1,12 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, useInView as useInViewFM } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useScrollLineRegister } from "./ScrollLineContext";
 import { projects, personalInfo } from "../mock";
-import { Github, ExternalLink, BookOpen, Bot, Languages, AlarmClock } from "lucide-react";
+import { ExternalLink, BookOpen, Bot, Languages, AlarmClock } from "lucide-react";
+import { Github } from "./BrandIcons";
+import SectionTitle from "./SectionTitle";
+import { projectsContainerVariants, projectsItemVariants } from "../utils/animations";
 
 const iconMap = {
   BookOpen,
@@ -15,6 +18,8 @@ const iconMap = {
 const Projects = () => {
   const registerPoint = useScrollLineRegister();
   const btnRef = React.useRef(null);
+  const titleRef = React.useRef(null);
+  const isTitleInView = useInViewFM(titleRef, { margin: "0px 0px -40% 0px", once: true });
 
   React.useEffect(() => {
     registerPoint("projects-btn", btnRef);
@@ -25,49 +30,21 @@ const Projects = () => {
     triggerOnce: true,
   });
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.3,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 1.2, ease: "easeOut" },
-    },
-  };
-
   return (
     <section id="projects" className="py-24 md:py-32 relative">
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
           ref={ref}
-          variants={containerVariants}
+          variants={projectsContainerVariants}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
         >
-          <motion.h2
-            variants={itemVariants}
-            className="text-5xl md:text-6xl font-light tracking-tight mb-16 text-center"
-          >
-            <span className="relative inline-block px-8 py-4 z-20">
-              <span
-                className="absolute inset-0 bg-white/10 dark:bg-[#0a0a0a]/10 backdrop-blur-md -z-10 pointer-events-none"
-                style={{
-                  WebkitMaskImage: "radial-gradient(ellipse at center, black 30%, transparent 70%)",
-                  maskImage: "radial-gradient(ellipse at center, black 30%, transparent 70%)",
-                }}
-              ></span>
-              <span className="relative z-10 text-black dark:text-white">Featured Projects</span>
-            </span>
-          </motion.h2>
+          <SectionTitle
+            title="Featured Projects"
+            isTitleInView={isTitleInView}
+            titleRef={titleRef}
+            itemVariants={projectsItemVariants}
+          />
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             {projects.map((project) => {
@@ -75,7 +52,7 @@ const Projects = () => {
               return (
                 <motion.div
                   key={project.id}
-                  variants={itemVariants}
+                  variants={projectsItemVariants}
                   className="group bg-white/70 dark:bg-[#0a0a0a]/70 backdrop-blur-md border border-gray-200 dark:border-[#333] overflow-hidden hover:border-black dark:hover:border-white hover:bg-white/80 dark:hover:bg-[#0a0a0a]/80 transition-all duration-300"
                 >
                   <div className="relative aspect-[4/3] flex items-center justify-center bg-gray-50/50 dark:bg-[#0a0a0a]/50 group-hover:bg-gray-100/50 dark:group-hover:bg-white/5 transition-colors duration-300">
@@ -112,9 +89,12 @@ const Projects = () => {
                         href={project.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 text-sm hover:underline text-black dark:text-white relative z-20"
+                        className="group flex items-center gap-2 text-sm hover:underline text-black dark:text-white relative z-20"
                       >
-                        <Github size={16} />
+                        <Github
+                          size={16}
+                          className="text-violet-500/80 dark:text-violet-400/80 group-hover:text-violet-500 dark:group-hover:text-violet-400 transition-colors"
+                        />
                         Code
                       </a>
                       {project.liveUrl && (
@@ -122,9 +102,12 @@ const Projects = () => {
                           href={project.liveUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center gap-2 text-sm hover:underline text-black dark:text-white relative z-20"
+                          className="group flex items-center gap-2 text-sm hover:underline text-black dark:text-white relative z-20"
                         >
-                          <ExternalLink size={16} />
+                          <ExternalLink
+                            size={16}
+                            className="text-emerald-500/80 dark:text-emerald-400/80 group-hover:text-emerald-500 dark:group-hover:text-emerald-400 transition-colors"
+                          />
                           Demo
                         </a>
                       )}
@@ -135,7 +118,7 @@ const Projects = () => {
             })}
           </div>
 
-          <motion.div variants={itemVariants} className="text-center relative">
+          <motion.div variants={projectsItemVariants} className="text-center relative">
             <a
               ref={btnRef}
               href={personalInfo.github}
