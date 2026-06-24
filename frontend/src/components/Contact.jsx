@@ -29,8 +29,6 @@ const Contact = () => {
     triggerOnce: true,
   });
 
-
-
   return (
     <section id="contact" className="py-24 md:py-32 relative z-20">
       <div className="max-w-4xl mx-auto px-6">

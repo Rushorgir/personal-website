@@ -112,7 +112,7 @@ export const smoothScrollTo = (targetY, duration = 1500) => {
     if (isCancelled) return;
     if (!startTime) startTime = timestamp;
     const progress = Math.min((timestamp - startTime) / duration, 1);
-    
+
     const t = getBezierT(progress);
     const easedProgress = getBezierY(t);
 
@@ -127,4 +127,3 @@ export const smoothScrollTo = (targetY, duration = 1500) => {
 
   window.requestAnimationFrame(step);
 };
-

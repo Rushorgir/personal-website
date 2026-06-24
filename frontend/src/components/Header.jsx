@@ -27,7 +27,7 @@ const Header = ({ theme, toggleTheme }) => {
       setIsDeleting(false);
       const nextIndex = (wordIndex + 1) % words.length;
       setWordIndex(nextIndex);
-      
+
       if (nextIndex === 1) {
         const randomColor = minecraftColors[Math.floor(Math.random() * minecraftColors.length)];
         setCurrentColorName(randomColor);
@@ -36,8 +36,8 @@ const Header = ({ theme, toggleTheme }) => {
       }
     } else {
       timer = setTimeout(() => {
-        setDisplayedText(prev => 
-          isDeleting 
+        setDisplayedText((prev) =>
+          isDeleting
             ? fullText.substring(0, prev.length - 1)
             : fullText.substring(0, prev.length + 1)
         );
@@ -51,11 +51,16 @@ const Header = ({ theme, toggleTheme }) => {
   const getMinecraftColor = () => {
     if (wordIndex !== 1 || !currentColorName) return undefined;
     switch (currentColorName) {
-      case "dark_red": return isDark ? "#FF5555" : "#AA0000"; // Light Red in dark mode, Dark Red in light mode
-      case "gold": return isDark ? "#FFAA00" : "#C29200";     // Gold in dark mode, Ochre/Dark Yellow in light mode
-      case "aqua": return isDark ? "#55FFFF" : "#00AAAA";
-      case "lime_green": return isDark ? "#55FF55" : "#00AA00";
-      default: return undefined;
+      case "dark_red":
+        return isDark ? "#FF5555" : "#AA0000"; // Light Red in dark mode, Dark Red in light mode
+      case "gold":
+        return isDark ? "#FFAA00" : "#C29200"; // Gold in dark mode, Ochre/Dark Yellow in light mode
+      case "aqua":
+        return isDark ? "#55FFFF" : "#00AAAA";
+      case "lime_green":
+        return isDark ? "#55FF55" : "#00AA00";
+      default:
+        return undefined;
     }
   };
 
