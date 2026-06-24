@@ -116,7 +116,7 @@ export const experience = [
     title: "Technical Team Member",
     organization: "HackClub & OSPC, VIT Chennai",
     description: [
-      "Active Core member of the R&D department of HackClub and Open Source department of OSPC, two of VIT Chennai's top-ranked technical clubs.",
+      "Active Core member of the R&D department of HackClub and OSPC, two of VIT Chennai's top-ranked technical clubs.",
       "Organizing hackathons and technical events with HackClub to foster innovation and collaboration.",
       "Secured a Top 4 finish in OSPC's Inter-Club Machine Learning Competition.",
     ],
